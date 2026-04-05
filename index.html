@@ -10,7 +10,12 @@ body {
   margin: 0;
   font-family: 'Georgia', serif;
   color: #fff;
-  background: url('https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/A4_hori.png');
+  background-image: url('https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/A4_hori.png');
+  background-position: top center; /* Alinha pelo topo */
+  background-size: 100% auto;    /* Faz a largura da imagem ocupar 100% da tela */
+  background-repeat: repeat-y;   /* Se a página for longa, ela repete para baixo */
+  background-attachment: fixed;  /* Mantém o fundo parado ao rolar */
+  background-color: #000; 
 }
 
 /* CAMADA ESCURA */
@@ -23,11 +28,16 @@ body {
 /* LOGO */
 .logo {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 20px;     /* Reduzi um pouco a margem do topo */
+  margin-bottom: -15px; /* Margem negativa puxa o título para cima! */
 }
 
 .logo img {
-  max-width: 400px;
+  width: 80%;       /* Mantendo o ajuste responsivo */
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* TÍTULO */
