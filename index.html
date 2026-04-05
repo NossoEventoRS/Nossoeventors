@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NossoEventoRS</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  color: #fff;
+  background: url('C:\Users\Marcio da Silva\Documents\Nosso EventoRS\Midias') center/cover no-repeat fixed;
+}
+
+/* CAMADA ESCURA */
+.overlay {
+  background: rgba(0,0,0,0.65);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* LOGO */
+.logo {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.logo img {
+  max-width: 400px;
+}
+
+/* TÍTULO */
+.titulo {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.titulo h2 {
+  font-size: 32px;
+  color: #f5d27a;
+}
+
+.titulo p {
+  max-width: 600px;
+  margin: auto;
+  font-size: 16px;
+}
+
+/* FORMULÁRIO */
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.form-box {
+  background: rgba(0,0,0,0.75);
+  border: 2px solid #d4af37;
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 25px rgba(212,175,55,0.4);
+}
+
+/* INPUTS */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #d4af37;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* BOTÃO */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(#d4af37, #a67c00);
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* TEXTO ABAIXO */
+.info {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* CONTATO */
+.contato {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="C:\Users\Marcio da Silva\Documents\Nosso EventoRS\Midias">
+  </div>
+
+  <!-- TEXTO -->
+  <div class="titulo">
+    <h2>Divulgue seu evento tradicionalista!</h2>
+    <p>
+      Promova seu evento gaúcho com a gente!  
+      Preencha o formulário e garanta visibilidade para seu rodeio, festival ou encontro tradicionalista.
+    </p>
+  </div>
+
+  <!-- FORMULÁRIO -->
+  <div class="form-container">
+    <div class="form-box">
+      <form id="form">
+        <input type="text" name="nome" placeholder="Nome" required>
+        <input type="email" name="email" placeholder="E-mail" required>
+        <input type="tel" name="telefone" placeholder="Telefone" required>
+        <textarea name="mensagem" rows="4" placeholder="Mensagem"></textarea>
+        <button type="submit">ENVIAR MENSAGEM</button>
+      </form>
+
+      <div class="info">
+        Seu evento ganhará destaque com <b>NossoEventoRS</b>.<br>
+        Estamos prontos para ajudar!
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTATO -->
+  <div class="contato">
+    📞 (51) 99905-1626<br>
+    📸 @nossoeventors
+  </div>
+
+</div>
+
+<script>
+const scriptURL = "COLE_AQUI_SUA_URL_DO_APPS_SCRIPT";
+
+document.getElementById("form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: new FormData(this)
+  })
+  .then(() => {
+    alert("Mensagem enviada com sucesso!");
+    this.reset();
+  })
+  .catch(() => alert("Erro ao enviar"));
+});
+</script>
+
+</body>
+</html>
