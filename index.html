@@ -10,7 +10,8 @@ body {
   margin: auto;
   font-family: 'Georgia', serif;
   color: #fff;
-  background: url('https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/A4.png') center/cover no-repeat fixed;
+  /* Aqui definimos 600px de largura para a imagem de fundo */
+  background: url('https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/A4.png') top center/600px auto repeat fixed;
 }
 
 /* CAMADA ESCURA */
@@ -23,13 +24,17 @@ body {
 /* LOGO */
 .logo {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 10px; /* Reduzi de 30px para 10px */
 }
 
+/* LOGO RESPONSIVO */
 .logo img {
-  max-width: 400px;
+  width: 80%;       /* O logo ocupará 80% da largura da tela em celulares */
+  max-width: 600px; /* Mas não passará de 600px em telas grandes (computadores) */
+  height: auto;     /* Garante que a proporção (altura) se mantenha perfeita */
+  display: block;
+  margin: 0 auto;
 }
-
 /* TÍTULO */
 .titulo {
   text-align: center;
