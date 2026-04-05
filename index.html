@@ -6,14 +6,22 @@
 <title>NossoEventoRS</title>
 
 <style>
+@media (min-width: 1200px) {
 body {
-  margin: auto;
+  background-size:
+  cover;
+  margin: 0;
+  padding: 0;
   font-family: 'Georgia', serif;
   color: #fff;
-  /* Aqui definimos 600px de largura para a imagem de fundo */
-  background: url('https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/A4.png') top center/1200px auto repeat fixed;
+  /* Ajustes para imagem horizontal */
+  background-image: url('https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/A4.png');
+  background-position: top center; /* Alinha pelo topo */
+  background-size: 100% auto;    /* Faz a largura da imagem ocupar 100% da tela */
+  background-repeat: repeat-y;   /* Se a página for longa, ela repete para baixo */
+  background-attachment: fixed;  /* Mantém o fundo parado ao rolar */
+  background-color: #000;        /* Cor de fundo caso a imagem demore a carregar */
 }
-
 /* CAMADA ESCURA */
 .overlay {
   background: rgba(0,0,0,0.65);
