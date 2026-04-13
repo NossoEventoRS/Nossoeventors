@@ -143,10 +143,10 @@ button {
   <div class="form-container">
     <div class="form-box">
       <form id="form">
-        <input type="text" name="nome" placeholder="Nome" required>
-        <input type="email" name="email" placeholder="E-mail" required>
-        <input type="tel" name="telefone" placeholder="Telefone" required>
-        <textarea name="mensagem" rows="4" placeholder="Mensagem"></textarea>
+        <input type="text" name="Nome" placeholder="Nome" required>
+        <input type="email" name="E-mail" placeholder="E-mail" required>
+        <input type="tel" name="Telefone" placeholder="Telefone" required>
+        <textarea name="Mensagem" rows="4" placeholder="Mensagem"></textarea>
         <button type="submit">ENVIAR MENSAGEM</button>
       </form>
 
@@ -165,20 +165,33 @@ button {
 </div>
 
 <script>
-const scriptURL = "COLE_AQUI_SUA_URL_DO_APPS_SCRIPT";
+const scriptURL = "https://script.google.com/macros/s/AKfycbxmlfR3Oamk5HJAPzFZrYWseymjbDhzLqxgz-bQdVRDSBU_GgiwZTR3szzYid9UxHVjLA/exec";
 
 document.getElementById("form").addEventListener("submit", function(e){
   e.preventDefault();
+  
+  // Exibe um feedback visual de carregamento se quiser
+  const btn = this.querySelector("button");
+  btn.disabled = true;
+  btn.innerText = "ENVIANDO...";
 
   fetch(scriptURL, {
     method: "POST",
+    mode: "no-cors", // Crucial para evitar erros de política de segurança no navegador
     body: new FormData(this)
   })
   .then(() => {
-    alert("Mensagem enviada com sucesso!");
+    alert("Obrigado, Mensagem enviada com sucesso!");
     this.reset();
+    btn.disabled = false;
+    btn.innerText = "ENVIAR MENSAGEM";
   })
-  .catch(() => alert("Erro ao enviar"));
+  .catch((error) => {
+    console.error('Erro!', error.message);
+    alert("Erro ao enviar. Verifique sua conexão.");
+    btn.disabled = false;
+    btn.innerText = "ENVIAR MENSAGEM";
+  });
 });
 </script>
 
