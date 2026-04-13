@@ -6,76 +6,81 @@
 <title>NossoEventoRS</title>
 
 <style>
+* { box-sizing: border-box; } /* Garante que o padding não quebre a largura */
+
 body {
   margin: 0;
   font-family: 'Georgia', serif;
   color: #fff;
   background-image: url('https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/A4_hori.png');
-  background-position: top center; /* Alinha pelo topo */
-  background-size: 100% auto;    /* Faz a largura da imagem ocupar 100% da tela */
-  background-repeat: repeat-y;   /* Se a página for longa, ela repete para baixo */
-  background-attachment: fixed;  /* Mantém o fundo parado ao rolar */
+  background-position: center top;
+  background-size: cover; /* Melhor para preencher a tela do celular */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-color: #000; 
 }
 
 /* CAMADA ESCURA */
 .overlay {
-  background: rgba(0,0,0,0.65);
+  background: rgba(0,0,0,0.7);
   min-height: 100vh;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* LOGO */
+/* LOGO - Ajustado para não sumir no topo */
 .logo {
   text-align: center;
-  margin-top: -200px;     /* Reduzi um pouco a margem do topo */
-  margin-bottom: -280px; /* Margem negativa puxa o título para cima! */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .logo img {
-  width: 80%;       /* Mantendo o ajuste responsivo */
-  max-width: 1200px;
+  width: 90%;
+  max-width: 500px; /* Tamanho máximo controlado */
   height: auto;
-  display: block;
-  margin: 0 auto;
 }
 
 /* TÍTULO */
 .titulo {
   text-align: center;
-  margin-top: 20px;
+  max-width: 800px;
+  margin-bottom: 20px;
 }
 
 .titulo h2 {
-  font-size: 32px;
+  font-size: 28px; /* Reduzido para caber em telas menores */
   color: #f5d27a;
+  margin-bottom: 10px;
 }
 
 .titulo h3 {
-  font-size: 18px;
+  font-size: 16px;
   color: #f5d27a;
+  font-weight: normal;
+  line-height: 1.4;
 }
 
 .titulo p {
-  max-width: 600px;
-  margin: auto;
-  font-size: 16px;
+  font-size: 15px;
+  margin-top: 15px;
+  padding: 0 10px;
 }
 
 /* FORMULÁRIO */
 .form-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .form-box {
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.85);
   border: 2px solid #d4af37;
   border-radius: 15px;
-  padding: 30px;
-  width: 100%;
-  max-width: 400px;
+  padding: 20px;
   box-shadow: 0 0 25px rgba(212,175,55,0.4);
 }
 
@@ -83,40 +88,53 @@ body {
 input, textarea {
   width: 100%;
   padding: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border-radius: 8px;
   border: 1px solid #d4af37;
   background: #1a1a1a;
   color: #fff;
+  font-size: 16px; /* Evita que o iPhone dê zoom automático no input */
 }
 
 /* BOTÃO */
 button {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   border: none;
   border-radius: 10px;
   background: linear-gradient(#d4af37, #a67c00);
   color: #000;
   font-weight: bold;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 
 /* TEXTO ABAIXO */
 .info {
   text-align: center;
   margin-top: 15px;
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 /* CONTATO */
 .contato {
   text-align: center;
-  margin-top:10px;
-  font-size: 16px;
+  margin-top: 30px;
+  padding-bottom: 20px;
 }
 
+.contato img {
+  height: 60px; /* Tamanho mais equilibrado para o Instagram */
+}
+
+/* AJUSTES PARA TELAS GRANDES (PC) */
+@media (min-width: 768px) {
+  .titulo h2 { font-size: 40px; }
+  .titulo h3 { font-size: 22px; }
+  .logo { margin-top: -50px; } /* Só usa margem negativa em telas grandes se necessário */
+}
 </style>
 </head>
 
@@ -124,22 +142,19 @@ button {
 
 <div class="overlay">
 
-  <!-- LOGO -->
   <div class="logo">
-    <img src="https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/Logo.png">
+    <img src="https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/Logo.png" alt="Logo">
   </div>
 
-  <!-- TEXTO -->
   <div class="titulo">
     <h2>Divulgue seu evento tradicionalista!</h2>
-    <h3>Secretaria para rodeios | Gestão de inscrições | Estrutura para avaliadores | Sonorização | e muito mais ...</h3>
+    <h3>Secretaria para rodeios | Gestão de inscrições | Estrutura para avaliadores | Sonorização</h3>
 
     <p>
       Promova seu evento com a gente! Preencha o formulário, entraremos em contato:
     </p>
   </div>
 
-  <!-- FORMULÁRIO -->
   <div class="form-container">
     <div class="form-box">
       <form id="form">
@@ -147,7 +162,7 @@ button {
         <input type="email" name="E-mail" placeholder="E-mail" required>
         <input type="tel" name="Telefone" placeholder="Telefone" required>
         <textarea name="Mensagem" rows="4" placeholder="Mensagem"></textarea>
-        <button type="submit">ENVIAR MENSAGEM</button>
+        <button type="submit" id="submitBtn">ENVIAR MENSAGEM</button>
       </form>
 
       <div class="info">
@@ -157,9 +172,10 @@ button {
     </div>
   </div>
 
-  <!-- CONTATO -->
   <div class="contato">
-  <center><img src="https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/instagran.png" height="100"></center>
+    <a href="https://www.instagram.com/nossoeventors/" target="_blank">
+      <img src="https://raw.githubusercontent.com/NossoEventoRS/Nossoeventors/refs/heads/main/instagran.png" alt="Instagram">
+    </a>
   </div>
 
 </div>
@@ -170,18 +186,17 @@ const scriptURL = "https://script.google.com/macros/s/AKfycbxmlfR3Oamk5HJAPzFZrY
 document.getElementById("form").addEventListener("submit", function(e){
   e.preventDefault();
   
-  // Exibe um feedback visual de carregamento se quiser
-  const btn = this.querySelector("button");
+  const btn = document.getElementById("submitBtn");
   btn.disabled = true;
   btn.innerText = "ENVIANDO...";
 
   fetch(scriptURL, {
     method: "POST",
-    mode: "no-cors", // Crucial para evitar erros de política de segurança no navegador
+    mode: "no-cors",
     body: new FormData(this)
   })
   .then(() => {
-    alert("Obrigado, Mensagem enviada com sucesso!");
+    alert("Obrigado! Mensagem enviada com sucesso.");
     this.reset();
     btn.disabled = false;
     btn.innerText = "ENVIAR MENSAGEM";
